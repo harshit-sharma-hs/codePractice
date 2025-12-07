@@ -1,28 +1,28 @@
 package DesignPatterns.Singleton;
 
+import DesignPatterns.Observer.Observer;
+
 public class Singleton {
     private static Singleton instance;
 
-    private Singleton() {
+    private Singleton(){
 
     }
-
-    public static Singleton getInstance() {
-        if (instance == null) {
-            synchronized (Singleton.class) {
-                try{
-                    if (instance == null) {
-                        instance = new Singleton();
-                    }
-                }
-                catch (Exception e){
-                }
+    public static Singleton getInstance()
+    {
+        if(instance==null)
+        {
+            synchronized (Singleton.class)
+            {
+                if (instance==null)
+                    instance=new Singleton();
             }
         }
         return instance;
     }
 
-    protected  Object readresolve(){
+    Object readResolve()
+    {
         return getInstance();
     }
 }

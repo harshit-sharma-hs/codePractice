@@ -1,0 +1,44 @@
+# Assignment
+You are required to complete a program that simulates the functionality of a Load Balancer. A Load Balancer acts as an intermediary between requester and a pool of servers, distributing incoming requests among the available servers based on a predefined strategy. Some of the generally used strategies are Random distribution and Round-Robin Distribution. 
+
+Your task is to:
+
+1. **Implement the Load Balancer and Request Dispatcher** interfaces with logic to assign requests to servers.
+
+2. **Fill in the method implementations** wherever needed in the given code.
+
+3. Ensure that the Load Balancer can support different request distribution strategies such as:
+  
+    * **Random Strategy**: Assign requests to a randomly selected server.
+
+    * **Round Robin Strategy**: Assign requests sequentially, cycling through the list of servers.
+
+---
+
+
+## 🚦 Functional Requirements
+
+* You should be able to add or remove a server by name at runtime (e.g., `"server1"`, `"server2"`). Each server is an object of the **`Server`** Class.
+* Send Requests to the Load balancer to test the program. Requests should be made in `Assessment.java` class. Each incoming request has a RequestId. 
+* The **`RequestDispatcher`** class should accept incoming requests and dispatch the request using a new Thread per request to the Load Balancer.
+* Load Balancer should select server to process the request from the pool based on the distribution strategy. You should implement Round Robin and Random strategies.
+* When a Server (Server.java) handles a request, it prints a `Server <server name> started processing request <requestID>` and `Server <server name> finished request <requestID>` log. The server takes some time (random value between 10 to 30 seconds) to process a request.
+* Each request must be handled in a **separate thread**.
+
+
+### Additional Details: 
+  * `ROUND_ROBIN` Strategy: Distributes requests sequentially across servers.
+  * `RANDOM` Strategy: Distributes requests randomly to any of the available servers. 
+
+## 💰 Bonus requirement
+
+Update the program to define a server property: limit, which defines limit of concurrent requests a server can handle. 
+The load balancer should not choose a server if the server is busy (limit of concurrent requests is reached).
+
+---
+
+## ⚙️ Technical Constraints
+
+* **Only core Java** libraries are allowed. No external frameworks.
+* Server and load balancer data structures must be **thread-safe**.
+ 
