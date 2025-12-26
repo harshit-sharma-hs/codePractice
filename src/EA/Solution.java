@@ -42,5 +42,18 @@ public class Solution {
         for(String dep :map.keySet())
             System.out.println(dep +"  -  "+ map.get(dep));
         //System.out.println(map);
+
+
+       employees.stream().collect(Collectors.groupingBy(Employee::getDepartment,Collectors.collectingAndThen(Collectors.toList(),n->n.stream().sorted(Comparator.comparing(Employee::getSalary).reversed()).limit(1))));
+
+employees.sort((a,b)->{
+    if(a.getName()!=b.getName())
+        return a.getName().compareTo(b.getName());
+    return a.getAge()- b.getAge();
+});
+
+
+
+
     }
 }
